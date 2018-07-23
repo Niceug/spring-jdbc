@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="memo@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="memo">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="bit_student"/>
+    <schema id="4" parent="1" name="canteenconsumemanagedb"/>
+    <schema id="5" parent="1" name="canteen_food_mechine"/>
+    <schema id="6" parent="1" name="day09_servlet"/>
+    <schema id="7" parent="1" name="housinglease"/>
+    <schema id="8" parent="1" name="housinglease_db"/>
+    <schema id="9" parent="1" name="information_schema"/>
+    <schema id="10" parent="1" name="inn_db"/>
+    <schema id="11" parent="1" name="lesson3"/>
+    <schema id="12" parent="1" name="login"/>
+    <schema id="13" parent="1" name="mobiledoctor"/>
+    <schema id="14" parent="1" name="myblog"/>
+    <schema id="15" parent="1" name="mysql"/>
+    <schema id="16" parent="1" name="performance_schema"/>
+    <schema id="17" parent="1" name="practice_lesson2"/>
+    <schema id="18" parent="1" name="projectmanage"/>
+    <schema id="19" parent="1" name="python"/>
+    <schema id="20" parent="1" name="room"/>
+    <schema id="21" parent="1" name="scientific_research_manage"/>
+    <schema id="22" parent="1" name="scott"/>
+    <schema id="23" parent="1" name="student"/>
+    <schema id="24" parent="1" name="student_manage"/>
+    <schema id="25" parent="1" name="sys"/>
+    <schema id="26" parent="1" name="test"/>
+    <schema id="27" parent="1" name="test_clone"/>
+    <schema id="28" parent="1" name="test_clone1"/>
+    <schema id="29" parent="1" name="test_transaction"/>
+    <table id="30" parent="2" name="memo_group"/>
+    <table id="31" parent="2" name="memo_info"/>
+    <table id="32" parent="2" name="memo_share"/>
+    <column id="33" parent="30" name="id">
+      <Position>1</Position>
+      <Comment>便签组编号</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="34" parent="30" name="name">
+      <Position>2</Position>
+      <Comment>便签组名称</Comment>
+      <DataType>varchar(8)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="30" name="created_time">
+      <Position>3</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="30" name="modify_time">
+      <Position>4</Position>
+      <Comment>修改时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <index id="37" parent="30" name="name">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="38" parent="30" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="39" parent="30" name="name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>name</UnderlyingIndexName>
+    </key>
+    <column id="40" parent="31" name="id">
+      <Position>1</Position>
+      <Comment>便签编号</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="41" parent="31" name="group_id">
+      <Position>2</Position>
+      <Comment>便签组编号</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="31" name="title">
+      <Position>3</Position>
+      <Comment>便签标题</Comment>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="31" name="content">
+      <Position>4</Position>
+      <Comment>便签内容</Comment>
+      <DataType>varchar(1024)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="44" parent="31" name="is_protected">
+      <Position>5</Position>
+      <Comment>是否私密，0：公开 1：私密</Comment>
+      <DataType>char(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="45" parent="31" name="background">
+      <Position>6</Position>
+      <Comment>背景颜色</Comment>
+      <DataType>enum(&apos;WHITE&apos;, &apos;RED&apos;, &apos;BLUE&apos;, &apos;GREEN&apos;)|0</DataType>
+      <DefaultExpression>&apos;WHITE&apos;</DefaultExpression>
+    </column>
+    <column id="46" parent="31" name="is_remind">
+      <Position>7</Position>
+      <Comment>是否提醒，0：不提醒 1：提醒</Comment>
+      <DataType>char(1)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="47" parent="31" name="remind_time">
+      <Position>8</Position>
+      <Comment>提醒时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="48" parent="31" name="created_time">
+      <Position>9</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="31" name="modify_time">
+      <Position>10</Position>
+      <Comment>修改时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <key id="50" parent="31" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="51" parent="32" name="id">
+      <Position>1</Position>
+      <Comment>便签分享编号</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="52" parent="32" name="info_id">
+      <Position>2</Position>
+      <Comment>便签编号</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="53" parent="32" name="mark">
+      <Position>3</Position>
+      <Comment>分享备注</Comment>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="54" parent="32" name="share_time">
+      <Position>4</Position>
+      <Comment>分享时间</Comment>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="55" parent="32" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
