@@ -11,11 +11,15 @@ http://www.springframework.org/schema/context/spring-context.xsd http://www.spri
 
     <contex:component-scan base-package="com.ltp.spring_jdbc_template" />
 
+    <contex:property-placeholder location="config.properties" />
     <import resource="application-database.xml" />
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
         <property name="dataSource" ref="dataSource" />
     </bean>
+
+
+
 
 
 </beans>
