@@ -1,11 +1,11 @@
 package com.ltp.spring_jdbc_template.dao;
 
 import com.ltp.spring_jdbc_template.entity.MemoGroup;
+import com.ltp.spring_jdbc_template.entity.MemoInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface MemoGroupOperation {
 
     /**
@@ -40,7 +40,14 @@ public interface MemoGroupOperation {
      * @param groupId 便签组id
      * @return 便签数量
      */
-    int queryMemoByMemoGroupId(int groupId);
+    int queryMemoCountByMemoGroupId(int groupId);
+
+    /**
+     * 查询是否有此便签名
+     * @param name
+     * @return
+     */
+    int queryMemoGroupCountByGroupName(String name);
 
     /**
      *根据便签组id，更新便签的便签组id
@@ -48,6 +55,13 @@ public interface MemoGroupOperation {
      * @return
      */
     int updateMemoByMemoGroupId(int groupId);
+
+    /**
+     *查询便签组下所有的便签
+     * @param memoGroupId
+     * @return
+     */
+    List<MemoInfo> queryMemoByMemoGroupId(int memoGroupId);
 
 }
 

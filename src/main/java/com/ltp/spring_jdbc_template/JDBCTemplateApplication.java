@@ -37,5 +37,8 @@ public class JDBCTemplateApplication {
 
         List<MemoGroup> list1 = memoGroupService.queryMemoGroup();
         System.out.println(list1);
+
+        memoGroupService.deleteMemoGroup(14);
+
     }
 }
