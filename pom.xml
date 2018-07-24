@@ -25,10 +25,18 @@
             <version>4.3.9.RELEASE</version>
         </dependency>
 
+        <!--SpringJDBC模板类-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>4.3.18.RELEASE</version>
+        </dependency>
+
+        <!--AOP用于事务管理-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>5.0.7.RELEASE</version>
         </dependency>
 
         <!--数据库连接池-->

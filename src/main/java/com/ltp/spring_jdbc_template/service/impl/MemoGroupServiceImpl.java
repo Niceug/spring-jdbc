@@ -1,19 +1,29 @@
-package com.ltp.spring_jdbc_template.service;
+package com.ltp.spring_jdbc_template.service.impl;
 
 import com.ltp.spring_jdbc_template.dao.MemoGroupOperation;
 import com.ltp.spring_jdbc_template.entity.MemoGroup;
+import com.ltp.spring_jdbc_template.service.MemoGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * 事务管理注解
+ */
 @Service
+@Transactional
 public class MemoGroupServiceImpl implements MemoGroupService {
 
     @Autowired
     private MemoGroupOperation memoGroupOperation;
 
     public int createMemoGroup(MemoGroup memoGroup) {
+        if(memoGroup == null || "".equals(memoGroup.getName()) || "".equals(memoGroup.getCreatedTime())) {
+            throw new IllegalArgumentException("非法参数");
+        }
+
         int count = memoGroupOperation.queryMemoGroupCountByGroupName(memoGroup.getName());
         if(count > 0) {
             System.out.println("便签组名字已存在");
@@ -38,6 +48,8 @@ public class MemoGroupServiceImpl implements MemoGroupService {
         return effect;
     }
 
+
+    @Transactional(readOnly = true, transactionManager = "transactionManager")
     public List<MemoGroup> queryMemoGroup() {
         return memoGroupOperation.queryMemoGroup();
     }

@@ -1,25 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:contex="http://www.springframework.org/schema/context"
-       xmlns:bean="http://www.springframework.org/schema/context"
-       xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd
-http://www.springframework.org/schema/context
-http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <contex:component-scan base-package="com.ltp.spring_jdbc_template" />
+    <context:component-scan base-package="com.ltp.spring_jdbc_template" />
 
-    <contex:property-placeholder location="config.properties" />
+    <context:property-placeholder location="config.properties" />
     <import resource="application-database.xml" />
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
         <property name="dataSource" ref="dataSource" />
     </bean>
 
+    <!--事务管理-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+        <!--配置引用数据源-->
+        <property name="dataSource" ref="dataSource" />
+    </bean>
 
 
+
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+
+
+    <!--切点表达式的方法，声明式事务，只在XML中声明，用起来比较麻烦-->
+
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+        <!--<tx:attributes>-->
+            <!--<tx:method name="query*" read-only="true"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="serviceMethod" expression="execution(* com.ltp.spring_jdbc_template.service.*.*(..))" />-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod" />-->
+    <!--</aop:config>-->
 
 
 </beans>

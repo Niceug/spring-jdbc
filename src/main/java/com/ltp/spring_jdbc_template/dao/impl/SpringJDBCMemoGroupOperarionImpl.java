@@ -1,6 +1,7 @@
-package com.ltp.spring_jdbc_template.dao;
+package com.ltp.spring_jdbc_template.dao.impl;
 
 import com.ltp.spring_jdbc_template.comment.Background;
+import com.ltp.spring_jdbc_template.dao.MemoGroupOperation;
 import com.ltp.spring_jdbc_template.entity.MemoGroup;
 import com.ltp.spring_jdbc_template.entity.MemoInfo;
 import org.springframework.beans.factory.annotation.Autowired;

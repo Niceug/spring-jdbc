@@ -21,5 +21,4 @@ public class MemoInfo {
     private Date remindTime;
     private Date createdTime;
     private Date modifyTime;
-    
 }

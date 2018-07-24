@@ -2,7 +2,6 @@ package com.ltp.spring_jdbc_template.dao;
 
 import com.ltp.spring_jdbc_template.entity.MemoGroup;
 import com.ltp.spring_jdbc_template.entity.MemoInfo;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
